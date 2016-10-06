@@ -6,19 +6,31 @@ var scores=[
   {key:3, name: 'XIAO', score: '1500'}
 ];
 
-var listScores= scores
-  .map(function(score){
-    return React.createElement('li', {key: score.key},
-      React.createElement('h2', {}, score.name),
-      React.createElement('h2', {}, score.score)
-  )
+var scoreItem= React.createClass({
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+    score: React.PropTypes.string.isRequired
+  },
+
+  render: function() {
+    return (
+      React.createElement('li', {className: 'score'},
+        React.createElement('h2', {className: 'score-user'}, this.props.name),
+        React.createElement('h2', {className: 'score-value'}, this.props.score)
+        )
+      )
+    },
 });
 
-var rootElement =
-  React.createElement('div', {}, 
-    React.createElement('h1', {}, 'High Scores'),
-    React.createElement('ul', {}, listScores)
-    );
+var scoreItemElements= scores
+  .map(function(score){
+    return React.createElement(scoreItem, score)
+});
+
+var rootElement=
+  React.createElement('div', {},
+    React.createElement('h1', {}, 'HighScores'),
+    React.createElement('ul', {}, scoreItemElements)
+  );
 
 ReactDOM.render(rootElement, document.getElementById('react-app'));
-
