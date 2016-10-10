@@ -11,7 +11,7 @@ var scoreItem= React.createClass({
   render: function() {
     return (
       React.createElement('li', {className: 'score'},
-        React.createElement('h2', {className: 'score-user'}, this.props.name),
+        React.createElement('h2', {className: 'score-user'}, this.props.name.toUpperCase()),
         React.createElement('h2', {className: 'score-value'}, this.props.score)
         )
       )
@@ -48,13 +48,14 @@ var NewScoreForm= React.createClass({
       React.createElement('form', {onSubmit: this.onSubmit, className: 'HighScoreForm', noValidate: true}, 
         React.createElement('input', {
           type: 'text',
+          maxLength: '4',
           className: errors.name && 'HighScoreForm-error',
           placeholder: 'Name',
           value: this.props.value.name,
           onChange: this.onNameChange,
         }),
         React.createElement('input', {
-          type: 'text',
+          type: 'number',
           className: errors.score && 'HighScoreForm-error',
           placeholder: 'Score',
           value: this.props.value.score,
@@ -114,11 +115,19 @@ function submitNewScore() {
   
   if (!score.name) {
     score.errors.name = ['Please enter your name'];
+    alert(score.errors.name);
   }
 
   if (!score.score) {
     score.errors.score = ['Please enter your score'];
+    alert(score.errors.score);
   }
+
+  if(score.score<0 || score.score>9999) {
+    score.errors.score= ['Please enter a valid score (0-9999)'];
+    alert(score.errors.score);
+  }
+
   console.log('state:'+JSON.stringify(state.scores,null,3));
   var scoresOrdered= sortByScore(state.scores.slice(0).concat(score));
   console.log('ordered:'+JSON.stringify(scoresOrdered,null,3));
