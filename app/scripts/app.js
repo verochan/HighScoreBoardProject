@@ -10,9 +10,10 @@ var scoreItem= React.createClass({
 
   render: function() {
     return (
-      React.createElement('li', {className: 'score'},
-        React.createElement('h2', {className: 'score-user'}, this.props.name.toUpperCase()),
-        React.createElement('h2', {className: 'score-value'}, this.props.score)
+      React.createElement('li', {className: 'score-view-list-item'},
+        React.createElement('h2', {className: 'score-view-list-item-position'}, getPosition(this.props.name, state.scores, 'name')),
+        React.createElement('h2', {className: 'score-view-list-item-name'}, this.props.name.toUpperCase()),
+        React.createElement('h2', {className: 'score-view-list-item-points'}, this.props.score)
         )
       )
     },
@@ -45,23 +46,25 @@ var NewScoreForm= React.createClass({
   render: function() {
     var errors = this.props.value.errors || {};
     return (
-      React.createElement('form', {onSubmit: this.onSubmit, className: 'HighScoreForm', noValidate: true}, 
-        React.createElement('input', {
-          type: 'text',
-          maxLength: '4',
-          className: errors.name && 'HighScoreForm-error',
-          placeholder: 'Name',
-          value: this.props.value.name,
-          onChange: this.onNameChange,
-        }),
-        React.createElement('input', {
-          type: 'number',
-          className: errors.score && 'HighScoreForm-error',
-          placeholder: 'Score',
-          value: this.props.value.score,
-          onChange: this.onNewScoreChange,
-        }),
-        React.createElement('button', {type: 'submit'}, 'Add new score')
+      React.createElement('div', {className: 'score-form'},
+        React.createElement('form', {onSubmit: this.onSubmit, className: 'highscore-form', noValidate: true}, 
+          React.createElement('input', {
+            type: 'text',
+            maxLength: '4',
+            className: errors.name && 'HighScoreForm-error',
+            placeholder: 'Name',
+            value: this.props.value.name,
+            onChange: this.onNameChange,
+          }),
+          React.createElement('input', {
+            type: 'number',
+            className: errors.score && 'HighScoreForm-error',
+            placeholder: 'Score',
+            value: this.props.value.score,
+            onChange: this.onNewScoreChange,
+          }),
+          React.createElement('button', {type: 'submit'}, 'SUBMIT')
+          )
         )
       )
   },
@@ -82,9 +85,9 @@ var ScoreView= React.createClass({
     });
 
   return (
-    React.createElement('div', {className: 'ScoreView'},
-      React.createElement('h1', {className: 'ScoreView-title'}, "High Scores"),
-      React.createElement('ul', {className: 'ScoreView-list'}, scoreItemElements),
+    React.createElement('div', {className: 'score-view'},
+      React.createElement('h1', {className: 'score-view-title'}, "HIGH SCORES"),
+      React.createElement('ul', {className: 'score-view-list'}, scoreItemElements),
       React.createElement(NewScoreForm, {
         value: this.props.newScore,
         onChange: this.props.onNewScoreFormChange,
@@ -104,6 +107,15 @@ function sortByScore(scoresToOrder) {
     return b.score-a.score
   })
   return scoresToOrder;
+}
+
+function getPosition(value, arr, prop) {
+    for(var i = 0; i < arr.length; i++) {
+        if(arr[i][prop] === value) {
+            return i+1;
+        }
+    }
+    return -1; //to handle the case where the value doesn't exist
 }
 
 function updateNewScore(score){
@@ -161,7 +173,14 @@ setState({
   scores:[
     {key:1, name: 'BOB', score: '1000'},
     {key:2, name: 'KING', score: '2000'},
-    {key:3, name: 'XIAO', score: '1500'},
+    {key:3, name: 'XIAO', score: '7500'},
+    {key:4, name: 'ASUK', score: '7000'},
+    {key:5, name: 'DEVI', score: '8200'},
+    {key:6, name: 'HEIH', score: '5320'},
+    {key:7, name: 'LEI', score: '6890'},
+    {key:8, name: 'KUMA', score: '6150'},
+    {key:9, name: 'JUN', score: '9230'},
+    {key:10, name: 'HWOA', score: '6740'}
   ],
   newScore: Object.assign({}, HIGHSCORE_TEMPLATE),
 });

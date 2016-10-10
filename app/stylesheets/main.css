@@ -1,42 +1,12 @@
 @font-face {
-  font-family: 'PoiretOne';
+  font-family: 'VT323';
   font-style: normal;
   font-weight: 400;
-  src: local('Poiret One'), local('PoiretOne-Regular'), url("https://fonts.gstatic.com/s/poiretone/v4/HrI4ZJpJ3Fh0wa5ofYMK8QzyDMXhdD8sAj6OAJTFsBI.woff2") format('woff2');
-}
-@font-face {
-  font-family: 'Oswald';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Oswald Regular'), local('Oswald-Regular'), url("https://fonts.gstatic.com/s/oswald/v11/_P8jt3Y65hJ9c4AzRE0V1OvvDin1pK8aKteLpeZ5c0A.woff2") format('woff2');
-}
-@font-face {
-  font-family: 'Lobster';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lobster'), local('Lobster-Regular'), url("https://fonts.gstatic.com/s/lobster/v18/G6-OYdAAwU5fSlE7MlBvhQLUuEpTyoUstqEm5AMlJo4.woff2") format('woff2');
-}
-a {
-  color: #7e644b;
-  text-decoration: none;
-}
-a:hover {
-  color: #3e4a40;
-}
-ul {
-  padding: 0;
-  list-style: none;
-}
-.icon {
-  color: #3e4a40;
-}
-img {
-  width: 100%;
-  height: auto;
+  src: local('VT323'), local('VT323-Regular'), url("http://fonts.gstatic.com/s/vt323/v7/vB0CfoJ37mvN-Rdp92NUWaCWcynf_cDxXwCLxiixG1c.woff2") format('woff2');
 }
 body {
   font-size: 16px;
-  background-color: #c4c9a8;
+  background-color: #000;
 }
 .wrapper {
   display: flex;
@@ -48,47 +18,31 @@ body {
   flex: 1 100%;
 }
 .header {
-  background: #3e4a40;
-  font-family: 'Lobster';
-  color: #a57f68;
+  font-family: 'VT323';
+  color: #f1f830;
   font-size: 3em;
   padding: 0 0.3em 0.2em 0.3em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: left;
+  background: #140d5a;
 }
 .main {
   flex-flow: row wrap;
   justify-content: space-around;
 }
-.navigation {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-  justify-content: flex-end;
-  margin: 0.2em 0 0 0;
-  padding: 0;
-}
-.navigation a {
-  padding: 0.5em;
-  text-align: center;
-  display: block;
-  font-size: 0.5em;
-  color: #8b8f76;
-}
-.navigation a:hover {
-  color: #a57f68;
-}
 .aside-right {
-  background: #8b8f76;
+  background: #140d5a;
   padding-top: 1.5em;
 }
 .footer {
-  background: #a57f68;
+  background: #140d5a;
   color: #3e4a40;
   font-family: 'Lobster';
-  text-align: center;
+  text-align: right;
+  font-family: 'VT323';
+  color: #f1f830;
 }
 @media all and (min-width: 480px) {
   .aside-right {
@@ -106,9 +60,6 @@ body {
   }
   .footer {
     order: 4;
-  }
-  .navigation {
-    justify-content: space-around;
   }
 }
 @media all and (min-width: 1024px) {
@@ -133,88 +84,66 @@ body {
   .title {
     text-align: center;
   }
-  .navigation {
-    flex-flow: column wrap;
-    padding: 0;
-  }
-  .angular-google-map-container {
-    width: 260px;
-  }
 }
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  align-content: flex-start;
+.score-view {
+  font-family: 'VT323';
 }
-.flex-item-postlist {
-  margin: auto;
+.score-view-title {
+  color: #ff0c13;
+  text-align: center;
+  font-size: 5em;
+  margin: 0 auto;
 }
-.flex-item {
-  margin: auto;
+.score-view-list {
+  margin: 0 auto;
+  padding: 3em;
+  text-decorations: none;
 }
-.blog-post-item,
-.user-link {
-  margin: 0em 0em 0.5em 0em;
-  border-bottom: 3px dashed #a57f68;
-  background-color: #979a85;
-}
-.blog-post-link,
-.user-link {
-  font-family: 'Oswald';
-  padding: 0.5em 0.5em 0.5em 0.5em;
-}
-.simple-pagination {
-  font-family: 'Oswald';
+.score-view-list li {
+  color: #140d5a;
+  font-size: 2em;
+  list-style-type: none;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: baseline;
-  align-content: center;
 }
-.simple-pagination p {
-  margin: 0 0.5em 0 0;
+.score-view-list-item h2 {
+  margin: 0;
+  padding: 0;
+  display: inline;
 }
-.simple-pagination__items {
-  color: #7e644b;
+.score-view-list-item-position {
+  color: #f1f830;
 }
-.simple-pagination__pages {
-  color: #3e4a40;
+.score-view-list-item-name {
+  color: #f2aeaf;
 }
-.simple-pagination__page-limit a {
-  color: #3e4a40;
+.score-view-list-item-points {
+  color: #f97e16;
 }
-.simple-pagination__page-limit a:hover {
-  color: #7e644b;
+.score-form form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2em;
 }
-.simple-pagination__button,
-.blog-post-header,
-.blog-post-create-header {
-  font-family: 'Oswald';
-  color: #7e644b;
-}
-.blog-post-body,
-.blog-post-user,
-.blog-post-comments,
-.about-me-description {
-  font-family: 'PoiretOne';
-  color: #3e4a40;
-  margin: 0 auto;
-  margin-bottom: 0.7em;
-}
-.comments-list {
-  list-style-type: none;
-}
-.subtitle {
-  background: #8b8f76;
-  font-family: 'PoiretOne';
-  color: #3e4a40;
+.highscore-form input {
+  border: dashed 0.1em #140d5a;
+  background: #000;
+  color: #f97e16;
+  font-family: 'VT323';
+  font-size: 2em;
   padding: 0.2em;
-  width: 99%;
-  display: block;
+  margin-right: 0.5em;
+}
+.highscore-form button {
+  background: none;
+  border: none;
+  color: #ff0c13;
+  font-family: 'VT323';
+  font-size: 2em;
 }
 .responsive-circle-container {
   width: 30%;
@@ -222,7 +151,7 @@ body {
 }
 .responsive-circle {
   border-radius: 50%;
-  border: 5px solid #a57f68;
+  border: 5px solid #f2aeaf;
   margin-bottom: 0.5em;
   margin: 0 auto 20px;
   width: 100%;
@@ -248,119 +177,29 @@ body {
 .img-circle::after {
   background: url("https://placekitten.com/400/400") repeat scroll 0 0/cover;
 }
-.container-blog-user {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.blog-user {
+.about-me {
   width: 100%;
-}
-.container-blog-user h1 {
-  font-family: "Oswald";
-  color: #8b8f76;
-  text-align: center;
-  margin: 0 auto;
-}
-.container-blog-user a {
-  font-family: "PoiretOne";
-  color: #a57f68;
-  display: block;
-  text-align: center;
-}
-.upper-box {
-  background: #3e4a40;
-  padding: 0.7em;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-}
-.lower-box {
-  background: #a57f68;
-  padding: 0.7em;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-}
-.container-blog-user i {
-  font-size: 2em;
-}
-.button {
-  background: #3e4a40;
-  width: 100%;
-  padding: 1em 0em 1em 0em;
-  align: center;
-  margin-top: 0.7em;
-}
-.button a {
-  color: #7e644b;
-  font-weight: bold;
-}
-.angular-google-map {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-.angular-google-map-container {
-  height: 200px;
-  border: 5px solid #3e4a40;
-}
-.blog-post-create-title {
-  color: #a57f68;
-  font-family: "PoiretOne";
-  font-weight: bold;
-  margin: 0 auto;
-}
-.blog-post-create-input,
-.blog-post-create-select {
-  width: 80%;
-  font-family: "PoiretOne";
-  font-size: 1em;
-  padding: 0.5em;
-  background: #979a85;
-  border: 0;
-  color: #3e4a40;
-  margin-top: 0.5em;
-  margin-bottom: 0.7em;
-}
-.blog-post-create-fieldset {
-  border: 0;
-  padding: 0;
-}
-.blog-post-create-button {
-  width: 100%;
-  background: #3e4a40;
-  color: #a57f68;
-  font-family: "Oswald";
-  border: 0;
-  padding: 0.3em;
-  font-size: 1em;
-}
-.blog-post-create-button[disabled] {
-  width: 100%;
-  background: #808080;
-  color: #666;
-  font-family: "Oswald";
-  border: 0;
-  padding: 0.3em;
-  font-size: 1em;
+  height: 100%;
 }
 .about-me-title {
-  font-family: "Oswald";
+  font-family: "VT323";
   text-align: left;
-  color: #3e4a40;
+  color: #f1f830;
   padding: 0em 1em 0em 1em;
+  font-size: 1.5em;
 }
 .about-me-name {
   display: block;
   text-align: center;
-  font-family: "Oswald";
-  color: #7e644b;
+  font-family: "VT323";
+  color: #f2aeaf;
+  font-size: 1.3em;
 }
 .about-me-description p {
   padding: 0em 1em 0em 1em;
-  font-family: "Oswald";
+  font-family: "VT323";
+  color: #f1f830;
+  font-size: 1.2em;
 }
 .about-me-connections {
   display: flex;
@@ -369,12 +208,12 @@ body {
   justify-content: center;
 }
 .aside-right i {
-  color: #3e4a40;
+  color: #f2aeaf;
   font-size: 2.5em;
   margin-right: 0.5em;
 }
 .aside-right i:hover {
-  color: #7e644b;
+  color: #f97e16;
 }
 .about-me-image {
   background: url("https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAgaAAAAJDE0OTc0ZGRhLTg4MWYtNDI3NC05ZmVhLWY0MjZmNmM5MDM0ZA.jpg") repeat scroll 0 0/cover;
