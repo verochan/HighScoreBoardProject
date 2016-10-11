@@ -1,6 +1,8 @@
 'use strict';
 
-//COMPONENTS
+//COMPONENTS------------------------------------------------------------------------
+
+//SCORE ITEM COMPONENT
 
 var scoreItem= React.createClass({
   propTypes: {
@@ -10,18 +12,25 @@ var scoreItem= React.createClass({
 
   render: function() {
     return (
-      React.createElement('li', {className: 'score-view-list-item'},
-        React.createElement('h2', {className: 'score-view-list-item-position'}, getPosition(this.props.name, state.scores, 'name')),
-        React.createElement('h2', {className: 'score-view-list-item-name'}, this.props.name.toUpperCase()),
-        React.createElement('h2', {className: 'score-view-list-item-points'}, this.props.score)
-        )
-      )
-    },
+      <li className="score-view-list-item">
+        <h2 className="score-view-list-item-position">
+          { getPosition(this.props.name, state.scores, 'name') }
+        </h2>  
+        <h2 className="score-view-list-item-name">
+          { this.props.name.toUpperCase() }
+        </h2>  
+        <h2 className="score-view-list-item-points">
+          { this.props.score }
+        </h2>
+      </li>
+      );
+    }
 });
 
 var newScore = {name: '', score: ''}
 
-//---------------------  
+
+//NEW SCORE FORM COMPONENT
 
 var NewScoreForm= React.createClass({
   propTypes: {
@@ -46,29 +55,29 @@ var NewScoreForm= React.createClass({
   render: function() {
     var errors = this.props.value.errors || {};
     return (
-      React.createElement('div', {className: 'score-form'},
-        React.createElement('form', {onSubmit: this.onSubmit, className: 'highscore-form', noValidate: true}, 
-          React.createElement('input', {
-            type: 'text',
-            maxLength: '4',
-            className: errors.name && 'HighScoreForm-error',
-            placeholder: 'Name',
-            value: this.props.value.name,
-            onChange: this.onNameChange,
-          }),
-          React.createElement('input', {
-            type: 'number',
-            className: errors.score && 'HighScoreForm-error',
-            placeholder: 'Score',
-            value: this.props.value.score,
-            onChange: this.onNewScoreChange,
-          }),
-          React.createElement('button', {type: 'submit'}, 'SUBMIT')
-          )
-        )
+      <div className="score-form">
+        <form onSubmit={this.onSubmit} className="highscore-form" noValidate={true} >
+          <input 
+            type="text" 
+            maxLength="4" 
+            className={errors.name && "highscore-form-error"} 
+            placeholder="Name" value={this.props.value.name} 
+            onChange={this.onNameChange} 
+          />
+          <input 
+            type="number" 
+            className={errors.score && "highscore-form-error"} 
+            placeholder="Score" value={this.props.value.score} 
+            onChange={this.onNewScoreChange} 
+          />
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
       )
   },
 });
+
+//SCORE VIEW COMPONENT
 
 var ScoreView= React.createClass({
   propTypes: {
@@ -85,22 +94,22 @@ var ScoreView= React.createClass({
     });
 
   return (
-    React.createElement('div', {className: 'score-view'},
-      React.createElement('h1', {className: 'score-view-title'}, "HIGH SCORES"),
-      React.createElement('ul', {className: 'score-view-list'}, scoreItemElements),
-      React.createElement(NewScoreForm, {
-        value: this.props.newScore,
-        onChange: this.props.onNewScoreFormChange,
-        onSubmit: this.props.onNewScoreFormSubmit,
-        })
-      )
+    <div className='score-view'>
+      <h1 className='score-view-title'>HIGH SCORES</h1>
+      <ul className='score-view-list'>{scoreItemElements}</ul>
+      <NewScoreForm 
+        value={this.props.newScore} 
+        onChange={this.props.onNewScoreFormChange} 
+        onSubmit={this.props.onNewScoreFormSubmit} 
+      />
+    </div>
     );
   },
 });  
 
 var HIGHSCORE_TEMPLATE = {name: '', score: '', errors: null};
 
-//ACTIONS
+//ACTIONS---------------------------------------------------------------------
 
 function sortByScore(scoresToOrder) {
   scoresToOrder.sort(function(a, b){ 
@@ -140,9 +149,9 @@ function submitNewScore() {
     alert(score.errors.score);
   }
 
-  console.log('state:'+JSON.stringify(state.scores,null,3));
+  //console.log('state:'+JSON.stringify(state.scores,null,3));
   var scoresOrdered= sortByScore(state.scores.slice(0).concat(score));
-  console.log('ordered:'+JSON.stringify(scoresOrdered,null,3));
+  //console.log('ordered:'+JSON.stringify(scoresOrdered,null,3));
 
   setState(
     Object.keys(score.errors).length === 0
@@ -154,7 +163,7 @@ function submitNewScore() {
   );
 }
 
-//MODEL
+//MODEL----------------------------------------------------------------------
 
 var state={};
 
