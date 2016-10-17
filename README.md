@@ -1,6 +1,6 @@
 ###The High Score Board Project
 This project features a group of rows with users'scores and a form where a new score can be submitted, when a new one is submitted
-the rows are reordered. It uses React, JSX and Babel.
+the rows are reordered. It uses React, JSX and Babel. The project is live on http://komikiro.com/highscoreboardproject/
 
 ###Installation
 
