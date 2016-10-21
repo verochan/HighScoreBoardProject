@@ -7,40 +7,41 @@
 body {
   font-size: 16px;
   background-color: #000;
+  font-family: text-font;
 }
 .wrapper {
-  display: flex;
   display: -webkit-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: flex;
   -webkit-flex-direction: row;
+  flex-direction: row;
   -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .wrapper > * {
   padding: 10px;
-  flex: 1 100%;
   -webkit-flex: 1 100%;
+  flex: 1 100%;
 }
 .header {
+  background: #140d5a;
   font-family: 'VT323';
   color: #f1f830;
   font-size: 3em;
   padding: 0 0.3em 0.2em 0.3em;
-  display: flex;
   display: -webkit-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: left;
+  display: flex;
   -webkit-flex-direction: row;
+  flex-direction: row;
   -webkit-flex-wrap: wrap;
-  -webkit-justify-content: left;
-  background: #140d5a;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
 }
 .main {
-  flex-flow: row wrap;
-  justify-content: space-around;
   -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-justify-content: space-around;
+  justify-content: space-around;
 }
 .aside-right {
   background: #140d5a;
@@ -48,34 +49,36 @@ body {
 }
 .footer {
   background: #140d5a;
-  color: #3e4a40;
-  font-family: 'Lobster';
-  text-align: right;
-  font-family: 'VT323';
   color: #f1f830;
+  font-family: 'VT323';
+  text-align: center;
 }
 @media all and (min-width: 480px) {
   .aside-right {
-    flex: 1;
     -webkit-flex: 1;
+    flex: 1;
   }
   .main {
-    order: 2;
-    flex: 3 0px;
     -webkit-order: 2;
+    order: 2;
     -webkit-flex: 3 0px;
+    flex: 3 0px;
   }
   .header {
-    order: 1;
     -webkit-order: 1;
+    order: 1;
   }
   .aside-right {
-    order: 3;
     -webkit-order: 3;
+    order: 3;
   }
   .footer {
-    order: 4;
     -webkit-order: 4;
+    order: 4;
+  }
+  .navigation {
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
   }
 }
 @media all and (min-width: 1024px) {
@@ -90,8 +93,8 @@ body {
 }
 @media all and (max-width: 768px) {
   .header {
-    justify-content: space-around;
     -webkit-justify-content: space-around;
+    justify-content: space-around;
   }
   .angular-google-map-container {
     width: 480px;
@@ -100,6 +103,14 @@ body {
 @media all and (max-width: 480px) {
   .title {
     text-align: center;
+  }
+  .navigation {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  .angular-google-map-container {
+    width: 260px;
   }
 }
 .score-view {
@@ -117,17 +128,16 @@ body {
   text-decorations: none;
 }
 .score-view-list li {
-  color: #140d5a;
   font-size: 2em;
   list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
   display: -webkit-flex;
+  display: flex;
   -webkit-flex-direction: row;
+  flex-direction: row;
   -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-justify-content: space-between;
+  justify-content: space-between;
 }
 .score-view-list-item h2 {
   margin: 0;
@@ -144,15 +154,15 @@ body {
   color: #f97e16;
 }
 .score-form form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
   display: -webkit-flex;
-  -webkit-flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -webkit-justify-content: center;
+  display: flex;
   margin-bottom: 2em;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 .highscore-form input {
   border: dashed 0.1em #140d5a;
@@ -209,7 +219,7 @@ body {
   height: 100%;
 }
 .about-me-title {
-  font-family: "VT323";
+  font-family: 'VT323';
   text-align: left;
   color: #f1f830;
   padding: 0em 1em 0em 1em;
@@ -218,25 +228,25 @@ body {
 .about-me-name {
   display: block;
   text-align: center;
-  font-family: "VT323";
+  font-family: 'VT323';
   color: #f2aeaf;
   font-size: 1.3em;
 }
 .about-me-description p {
   padding: 0em 1em 0em 1em;
-  font-family: "VT323";
+  font-family: 'VT323';
   color: #f1f830;
   font-size: 1.2em;
 }
 .about-me-connections {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
   display: -webkit-flex;
+  display: flex;
   -webkit-flex-direction: row;
+  flex-direction: row;
   -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-justify-content: center;
+  justify-content: center;
 }
 .aside-right i {
   color: #f2aeaf;

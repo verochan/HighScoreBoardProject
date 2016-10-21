@@ -1,78 +1,122 @@
 @import 'fonts'
 
-//BASIC SETTINGS  
+//COLORS
+
+yellow= #F1F830
+blue= #140D5A
+red=#FF0C13
+pink=#F2AEAF
+orange=#F97E16
+
+//FONTS
+
+title-font='VT323'
+
+//MIXINS
+
+vendor(prop, args)
+    if prop=='display' 
+        if args=='flex'
+            {prop} -webkit- + args
+            {prop} args
+        else
+            {prop} args    
+    else    
+        -webkit-{prop} args
+        {prop} args
+
+display()
+    vendor('display', arguments)   
+
+flex-direction()
+    vendor('flex-direction', arguments)         
+
+flex-wrap()
+    vendor('flex-wrap', arguments)
+
+flexx()
+    vendor('flex', arguments)    
+
+order()
+    vendor('order', arguments)    
+
+justify-content()
+    vendor('justify-content', arguments)  
+
+flex-flow()
+    vendor('flex-flow', arguments)  
+
+align-items()
+    vendor('align-items', arguments)
+
+align-content()
+    vendor('align-content', arguments) 
+
+flex-config()    
+    flex-direction arguments[0]
+    flex-wrap arguments[1]
+    if arguments[2]!='0'
+        justify-content arguments[2]
+    if arguments[3]!='0'
+        align-items arguments[3]
+    if arguments[4]!='0'    
+        align-content arguments[4]  
+ 
 
 
 //COMMON PARTS
 
 body
     font-size 16px
-    background-color black 
+    background-color black
+    font-family text-font
 
 .wrapper
     display flex
-    display -webkit-flex
-    flex-direction row
-    flex-wrap wrap
-    -webkit-flex-direction row
-    -webkit-flex-wrap wrap
+    flex-config row wrap 0 0 0
 
 .wrapper > * 
     padding: 10px
-    flex: 1 100%
-    -webkit-flex: 1 100%
+    flexx: 1 100%
 
 .header
-    font-family 'VT323'
-    color #F1F830
+    background blue
+    font-family title-font
+    color yellow
     font-size 3em
     padding 0 0.3em 0.2em 0.3em
     display flex
-    display -webkit-flex
-    flex-direction row
-    flex-wrap wrap
-    justify-content left  
-    -webkit-flex-direction row
-    -webkit-flex-wrap wrap
-    -webkit-justify-content left  
-    background #140D5A
+    flex-config row wrap space-between 0 0 
 
 .main
     flex-flow row wrap
     justify-content space-around
-    -webkit-flex-flow row wrap
-    -webkit-justify-content space-around
 
 .aside-right
-    background #140D5A
+    background blue
     padding-top 1.5em
 
 .footer
-    background #140D5A
-    color #3E4A40
-    font-family 'Lobster'
-    text-align right
-    font-family 'VT323'
-    color #F1F830
-    
+    background blue
+    color yellow
+    font-family title-font
+    text-align center
+
+
 @media all and (min-width : 480px) 
     .aside-right  
-        flex 1 
-        -webkit-flex 1 
+        flexx 1 
     .main
         order 2
-        flex 3 0px
-        -webkit-order 2
-        -webkit-flex 3 0px
+        flexx 3 0px
     .header
-        order 1   
-        -webkit-order 1  
+        order 1    
     .aside-right  
         order 3 
-        -webkit-order 3 
     .footer   
         order 4 
-        -webkit-order 4 
+    .navigation
+        justify-content space-around
 
 @media all and (min-width: 1024px)
     .angular-google-map-container 
@@ -85,21 +129,26 @@ body
 @media all and (max-width : 768px) 
     .header
         justify-content space-around
-        -webkit-justify-content space-around
     .angular-google-map-container 
         width 480px
 
 @media all and (max-width : 480px)
     .title
-        text-align center    
+        text-align center   
+    .navigation
+        flex-flow column wrap
+        padding 0
+    .angular-google-map-container 
+        width 260px    
+  
 
 //SCORES VIEW
 
 .score-view
-    font-family 'VT323'
+    font-family title-font
 
 .score-view-title
-    color #FF0C13
+    color red
     text-align center
     font-size 5em
     margin 0 auto
@@ -109,18 +158,11 @@ body
     padding 3em
     text-decorations none
 
-.score-view-list li
-    color #140D5A   
+.score-view-list li   
     font-size 2em 
     list-style-type none
     display flex
-    flex-direction row
-    flex-wrap wrap
-    justify-content space-between 
-    display -webkit-flex
-    -webkit-flex-direction row
-    -webkit-flex-wrap wrap
-    -webkit-justify-content space-between 
+    flex-config row wrap space-between 0 0
 
 .score-view-list-item h2
     margin 0
@@ -128,33 +170,27 @@ body
     display inline   
 
 .score-view-list-item-position     
-    color #F1F830
+    color yellow
 
 .score-view-list-item-name
-    color #F2AEAF  
+    color pink
 
 .score-view-list-item-points  
-    color #F97E16
+    color orange
 
 
 //FORM
 
 .score-form form
-    display flex
-    flex-direction row
-    flex-wrap wrap
-    justify-content center    
-    display -webkit-flex
-    -webkit-flex-direction row
-    -webkit-flex-wrap wrap
-    -webkit-justify-content center   
+    display flex 
     margin-bottom 2em
+    flex-config row wrap center 0 0
 
 .highscore-form input
-    border dashed 0.1em #140D5A
+    border dashed 0.1em blue
     background black
-    color #F97E16
-    font-family 'VT323'
+    color orange
+    font-family title-font
     font-size 2em
     padding 0.2em
     margin-right 0.5em
@@ -163,8 +199,8 @@ body
 .highscore-form button
     background none
     border none
-    color #ff0c13   
-    font-family 'VT323' 
+    color red  
+    font-family title-font
     font-size 2em
     width 100%
 
@@ -177,7 +213,7 @@ body
 
 .responsive-circle 
     border-radius: 50%
-    border 5px solid #f2aeaf
+    border 5px solid pink
     margin-bottom 0.5em
     margin: 0 auto 20px
     width: 100%
@@ -212,42 +248,36 @@ body
     height 100%
 
 .about-me-title
-    font-family "VT323"
+    font-family title-font
     text-align left
-    color #f1f830
+    color yellow
     padding 0em 1em 0em 1em
     font-size 1.5em
 
 .about-me-name
     display block
     text-align center    
-    font-family "VT323"
-    color #f2aeaf
+    font-family title-font
+    color pink
     font-size 1.3em
 
 .about-me-description p
     padding 0em 1em 0em 1em
-    font-family "VT323"  
-    color #f1f830
+    font-family title-font  
+    color yellow
     font-size 1.2em
 
 .about-me-connections
-    display flex   
-    flex-direction row
-    flex-wrap wrap
-    justify-content center
-    display -webkit-flex   
-    -webkit-flex-direction row
-    -webkit-flex-wrap wrap
-    -webkit-justify-content center
+    display flex
+    flex-config row wrap center 0 0
 
 .aside-right i
-    color #f2aeaf
+    color pink
     font-size 2.5em   
     margin-right 0.5em  
 
 .aside-right i:hover
-    color #f97e16     
+    color orange    
 
 .about-me-image
     background url('https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAgaAAAAJDE0OTc0ZGRhLTg4MWYtNDI3NC05ZmVhLWY0MjZmNmM5MDM0ZA.jpg') repeat scroll 0 0 / cover  
